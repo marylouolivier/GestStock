@@ -11,10 +11,11 @@
 <div class="example-wrapper">
     <h1>Hello {{ controller_name }}! ✅</h1>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/symfonySIO/GestStock/src/Controller/FournisseursController.php'|file_link(0) }}">src/Controller/FournisseursController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/symfonySIO/GestStock/templates/fournisseurs/index.html.twig'|file_link(0) }}">templates/fournisseurs/index.html.twig</a></code></li>
-    </ul>
+    {% for fournisseur in fournisseurs %}
+    <p>{{fournisseur.NomFour}} {{fournisseur.SiteWebFour}}</p>
+        {% for article in fournisseur.getArticles() %}
+        <p>{{article.NomArt}} {{article.QtArt}}</p>   
+        {% endfor %}
+    {% endfor %}
 </div>
 {% endblock %}
