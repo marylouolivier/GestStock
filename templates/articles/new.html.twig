@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvel article
+{% endblock %}
+
+{% block body %}
+	<div>
+		<h1>Formulaire d'ajout d'un nouvel article</h1>
+
+		{{ include('articles/_form.html.twig') }}
+
+		<a href="{{ path('articles_index') }}">Retour à la liste</a>
+	</div>
+{% endblock %}

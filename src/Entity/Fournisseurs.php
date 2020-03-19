@@ -97,4 +97,8 @@ class Fournisseurs
 
         return $this;
     }
+
+    public function _toString(){
+        return $this->NomFour;
+    }
 }

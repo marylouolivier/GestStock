@@ -5,8 +5,11 @@
 
 {% block stylesheets %}
 	<style>
-		.taille {}
-		.largeur {}
+		#Modifier,
+		#Add_article {
+			color: #000000;
+			text-decoration: none;
+		}
 	</style>
 {% endblock %}
 
@@ -14,6 +17,7 @@
 	<table class="table table-hover">
 		<thead align="center">
 			<tr>
+				<th scope="col">Identifiant</th>
 				<th scope="col">Articles</th>
 				<th scope="col">Quantité</th>
 			</tr>
@@ -22,26 +26,28 @@
 			{% for fournisseur in fournisseurs %}
 				{% for article in fournisseur.getArticles() %}
 					<tr class="table-dark">
+						<td>{{ article.id }}</td>
+						<td>{{ article.NomArt }}</td>
 						<td>
-							<p>
-								{{article.NomArt}}
-							</p>
-						</td>
-						<td>
-							<p>
-								<button type="button" class="btn btn-info">
-									<i class="fas fa-edit"></i>
-								</button>
-								{{article.QtArt}}
-								<button type="button" class="btn btn-info">
-									<i class="fas fa-trash"></i>
-								</button>
-							</p>
+							<button type="button" class="btn btn-outline-info">
+								<a href="{{ path('articles_edit', {'id': article.id}) }}">
+									<i class="fas fa-pen-square" id="Modifier"></i>
+								</a>
+							</button>
+							{{article.QtArt}}
+							<button type="button" class="btn btn-primary">
+								<a href="{{ path('articles_delete', {'id': article.id}) }}">
+									<i class="fas fa-trash" id="Add_article"></i>
+								</a>
+							</button>
 						</td>
 					</tr>
 				{% endfor %}
 			{% endfor %}
 		</tbody>
 	</table>
-	<button type="button" class="btn btn-outline-info">Ajouter un nouvel article</button>
+
+	<button type="button" class="btn btn-primary">
+		<a href="{{ path('articles_new') }}" id="Add_article">Ajouter un nouvel article</a>
+	</button>
 {% endblock %}
