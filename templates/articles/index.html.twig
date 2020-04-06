@@ -10,28 +10,37 @@
 			color: #000000;
 			text-decoration: none;
 		}
+		h1{
+			text-align:center;
+		}
+		th{
+			text-align:center;
+		}
 	</style>
 {% endblock %}
 
 {% block body %}
+<div>
+	<h1>Etat des stocks</h1>
+</div>
 	<table class="table table-hover">
 		<thead align="center">
 			<tr>
-				<th scope="col">Identifiant</th>
-				<th scope="col">Articles</th>
-				<th scope="col">Quantité</th>
+				<th scope="col"><h4>Articles</h4></th>
+				<th scope="col"><h4>Nom du fournisseur</h4></th>
+				<th scope="col"><h4>Quantité</h4></th>
 			</tr>
 		</thead>
 		<tbody align="center">
 			{% for fournisseur in fournisseurs %}
 				{% for article in fournisseur.getArticles() %}
 					<tr class="table-dark">
-						<td>{{ article.id }}</td>
 						<td>{{ article.NomArt }}</td>
+						<td>{{ fournisseur.NomFour }}</td>
 						<td>
-							<button type="button" class="btn btn-outline-info">
+							<button type="button" class="btn btn-primary">
 								<a href="{{ path('articles_edit', {'id': article.id}) }}">
-									<i class="fas fa-pen-square" id="Modifier"></i>
+									<i class="fas fa-pencil-alt" id="Modifier"></i>
 								</a>
 							</button>
 							{{article.QtArt}}

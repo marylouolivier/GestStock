@@ -1,11 +1,28 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Fournisseurs{% endblock %}
+{% block title %}Nouveau fournisseur{% endblock %}
+
+{% block stylesheets %}
+	<style>
+		#Modifier,
+		#Add_article {
+			color: #000000;
+			text-decoration: none;
+		}
+        h1{
+            text-align:center;
+        }
+	</style>
+{% endblock %}
 
 {% block body %}
-    <h1>Create new Fournisseurs</h1>
+    <div>
+        <h1>Formulaire d'ajout d'un nouveau fournisseur</h1>
+    </div>
 
     {{ include('fournisseurs/_form.html.twig') }}
 
-    <a href="{{ path('fournisseurs_index') }}">back to list</a>
+    <button type="button" class="btn btn-primary">
+        <a href="{{ path('fournisseurs_index') }}" id="Add_article">Retour à la liste des fournisseurs</a>
+    </button>
 {% endblock %}

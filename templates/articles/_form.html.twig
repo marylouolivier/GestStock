@@ -1,15 +1,26 @@
+{% block stylesheets %}
+	<style>
+		.row{
+			margin-bottom: 20px;
+		}
+	</style>
+{% endblock %}
+
 {{ form_start(form) }}
+<div class="container">
 <div class="row">
 	<div class="col-lg-12">
 		{{ form_errors(form) }}
 	</div>
 </div>
+</div>
 <div class="row">
-<div class="col-lg-2">
-	{{ form_widget(form.title) }}
-</div>
-<div class="col-lg-2">
+	<div class="col-lg-4">
 	{{ form_widget(form.NomArt) }}
+	</div>
+	<div class="col-lg-4">
+	{{ form_widget(form.QtArt) }}
+	</div>
 </div>
-<button class="btn btn-primary">{{ button_label|default('Enregistrer') }}</button>
 {{ form_end(form) }}
+	<button type="button" class="btn btn-primary">{{ button_label|default('Enregistrer') }}</button>

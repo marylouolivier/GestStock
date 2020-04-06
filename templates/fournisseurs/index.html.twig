@@ -1,37 +1,51 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Fournisseurs index{% endblock %}
+{% block title %}Liste des fournisseurs{% endblock %}
+
+{% block stylesheets %}
+	<style>
+		#Modifier,
+		#Add_article {
+			color: #000000;
+			text-decoration: none;
+		}
+        h1{
+            text-align:center;
+        }
+        td{
+            vertical-align:middle;
+        }
+	</style>
+{% endblock %}
 
 {% block body %}
-    <h1>Fournisseurs index</h1>
+    <h1>Liste des fournisseurs</h1>
 
-    <table class="table">
-        <thead>
+    <table class="table table-hover">
+		<thead align="center">
             <tr>
-                <th>Id</th>
-                <th>NomFour</th>
-                <th>SiteWebFour</th>
-                <th>actions</th>
+                <th scope="col"><h4>Nom des fournisseurs</h4></th>
+                <th scope="col"><h4>Site-Web des fournisseurs</h4></th>
             </tr>
         </thead>
-        <tbody>
+        <tbody align="center">
         {% for fournisseur in fournisseurs %}
-            <tr>
-                <td>{{ fournisseur.id }}</td>
+            <tr align="center" class="table-dark">
                 <td>{{ fournisseur.NomFour }}</td>
                 <td>{{ fournisseur.SiteWebFour }}</td>
                 <td>
-                    <a href="{{ path('fournisseurs_show', {'id': fournisseur.id}) }}">show</a>
-                    <a href="{{ path('fournisseurs_edit', {'id': fournisseur.id}) }}">edit</a>
+                    <button type="button" class="btn btn-primary">
+                        <a href="{{ path('fournisseurs_edit', {'id': fournisseur.id}) }}">
+                            <i class="fas fa-pencil-alt" id="Modifier"></i>
+						</a>
+                    </button>
                 </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('fournisseurs_new') }}">Create new</a>
+    <button type="button" class="btn btn-primary">
+        <a href="{{ path('fournisseurs_new') }}" id="Add_article">Ajouter un nouveau fournisseur</a>
+    </button>
 {% endblock %}
